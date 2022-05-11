@@ -5,6 +5,7 @@ import spring.udemy.petClinicDemo.model.Owner;
 import spring.udemy.petClinicDemo.services.CrudService;
 import spring.udemy.petClinicDemo.services.OwnerService;
 
+import java.util.Collections;
 import java.util.Set;
 
 @Service
@@ -21,7 +22,7 @@ public class OwnerServiceMap extends AbstractMapService<Owner,Long> implements O
 
     @Override
     public Owner save(Owner object) {
-        return super.save(object.getId(),object);
+        return super.save(object);
     }
 
     @Override
@@ -38,4 +39,6 @@ public class OwnerServiceMap extends AbstractMapService<Owner,Long> implements O
     public Owner findByLastName(String lastName) {
         return null;
     }
+
+
 }
