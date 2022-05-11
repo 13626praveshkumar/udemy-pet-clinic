@@ -2,10 +2,11 @@ package spring.udemy.petClinicDemo.services.map;
 
 import spring.udemy.petClinicDemo.model.Pet;
 import spring.udemy.petClinicDemo.services.CrudService;
+import spring.udemy.petClinicDemo.services.PetService;
 
 import java.util.Set;
 
-public class PetServiceMap extends AbstractMapService<Pet,Long> implements CrudService<Pet,Long> {
+public class PetServiceMap extends AbstractMapService<Pet,Long> implements PetService {
     @Override
     public Set<Pet> findAll() {
         return super.findAll();
@@ -24,5 +25,10 @@ public class PetServiceMap extends AbstractMapService<Pet,Long> implements CrudS
     @Override
     public Pet findById(Long id) {
         return super.findById(id);
+    }
+
+    @Override
+    public Pet findByID(Long id) {
+        return null;
     }
 }
