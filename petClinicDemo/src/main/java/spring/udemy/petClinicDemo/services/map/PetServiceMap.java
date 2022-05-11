@@ -1,11 +1,13 @@
 package spring.udemy.petClinicDemo.services.map;
 
+import org.springframework.stereotype.Service;
 import spring.udemy.petClinicDemo.model.Pet;
 import spring.udemy.petClinicDemo.services.CrudService;
 import spring.udemy.petClinicDemo.services.PetService;
 
 import java.util.Set;
 
+@Service
 public class PetServiceMap extends AbstractMapService<Pet,Long> implements PetService {
     @Override
     public Set<Pet> findAll() {
