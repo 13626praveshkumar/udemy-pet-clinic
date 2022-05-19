@@ -4,8 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import spring.udemy.petClinicDemo.model.Owner;
+import spring.udemy.petClinicDemo.model.Pet;
+import spring.udemy.petClinicDemo.model.PetType;
 import spring.udemy.petClinicDemo.model.Vet;
 import spring.udemy.petClinicDemo.services.OwnerService;
+import spring.udemy.petClinicDemo.services.PetService;
+import spring.udemy.petClinicDemo.services.PetTypeService;
 import spring.udemy.petClinicDemo.services.VetService;
 import spring.udemy.petClinicDemo.services.map.OwnerServiceMap;
 import spring.udemy.petClinicDemo.services.map.VetServiceMap;
@@ -15,11 +19,13 @@ public class DataLoader implements CommandLineRunner {
 
     private final OwnerService ownerService;
     private final VetService vetService;
+    private final PetTypeService petTypeServiceService;
 
     //@Autowired      Not required for constructor from spring 4.2
-    public DataLoader(OwnerService ownerService, VetService vetService) {
+    public DataLoader(OwnerService ownerService, VetService vetService,PetTypeService petTypeServiceService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
+        this.petTypeServiceService=petTypeServiceService;
     }
 
     @Override
@@ -56,5 +62,17 @@ public class DataLoader implements CommandLineRunner {
 //        vet2.setId(2L);
         vetService.save(vet2);
         System.out.println("Loaded vets...");
+
+        PetType dog=new PetType();
+        dog.setName("dog");
+        PetType savedDogType=petTypeServiceService.save(dog);
+
+        PetType cat=new PetType();
+        dog.setName("cat");
+        PetType savedcatType=petTypeServiceService.save(dog);
+        System.out.println("Loaded pettype...");
+
+
+
     }
 }
