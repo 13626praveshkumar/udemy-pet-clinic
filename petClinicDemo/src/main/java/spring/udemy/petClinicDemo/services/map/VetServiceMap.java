@@ -34,8 +34,8 @@ public class VetServiceMap extends AbstractMapService<Vet,Long> implements VetSe
             object.getSpecialities().forEach(speciality -> {
                 if(speciality.getId()==null)
                 {
-                    Speciality savedSpeciality=specialityService.save(speciality);
-                    speciality.setId(savedSpeciality.getId());
+                    Speciality savedSpeciality1=specialityService.save(speciality);
+                    speciality.setId(savedSpeciality1.getId());
                 }
             });
         }
