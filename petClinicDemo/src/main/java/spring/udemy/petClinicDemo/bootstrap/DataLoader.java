@@ -14,6 +14,8 @@ import spring.udemy.petClinicDemo.services.VetService;
 import spring.udemy.petClinicDemo.services.map.OwnerServiceMap;
 import spring.udemy.petClinicDemo.services.map.VetServiceMap;
 
+import java.time.LocalDate;
+
 @Component
 public class DataLoader implements CommandLineRunner {
 
@@ -30,16 +32,40 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+
+        PetType dog=new PetType();
+        dog.setName("dog");
+        PetType savedDogType=petTypeServiceService.save(dog);
+
+        PetType cat=new PetType();
+        dog.setName("cat");
+        PetType savedcatType=petTypeServiceService.save(dog);
+        System.out.println("Loaded pettype...");
+
+
         Owner owner1=new Owner();
 //        owner1.setId(1L);
         owner1.setFirstName("Pravesh");
         owner1.setLastName("Kumar");
+        owner1.setFirstName("7th block");
+        owner1.setCity("blr");
+        owner1.setTelephone("12345678");
+
+        Pet mikesPet=new Pet();
+        mikesPet.setPetType(savedDogType);
+        mikesPet.setOwner(owner1);
+        mikesPet.setBirthDate(LocalDate.now());
+        owner1.getPets().add(mikesPet);
+
         ownerService.save(owner1);
 
         Owner owner2=new Owner();
 //        owner2.setId(2L);
         owner2.setFirstName("Shailesh");
         owner2.setLastName("Kumar");
+        owner2.setFirstName("7th block");
+        owner2.setCity("blr");
+        owner2.setTelephone("12345678");
         ownerService.save(owner2);
 
         Owner owner3=new Owner();
@@ -63,14 +89,7 @@ public class DataLoader implements CommandLineRunner {
         vetService.save(vet2);
         System.out.println("Loaded vets...");
 
-        PetType dog=new PetType();
-        dog.setName("dog");
-        PetType savedDogType=petTypeServiceService.save(dog);
 
-        PetType cat=new PetType();
-        dog.setName("cat");
-        PetType savedcatType=petTypeServiceService.save(dog);
-        System.out.println("Loaded pettype...");
 
 
 
